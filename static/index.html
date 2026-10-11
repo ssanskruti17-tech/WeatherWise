@@ -1,0 +1,150 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--<title>Weather Monitoring &amp; Heatwave Prediction System</title>-->
+<!--<link rel="stylesheet" href="style.css">-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<aside class="sidebar">-->
+<!--  <div class="brand">🌤️ WeatherWatch<small>Heatwave Prediction System</small></div>-->
+<!--  <nav id="nav"></nav>-->
+<!--  <div class="side-note">Monitor. Predict.<br>Warn early.</div>-->
+<!--  <div class="api-status" id="apiStatus">Checking API…</div>-->
+<!--</aside>-->
+
+<!--<main>-->
+<!--  <section id="dash" class="view">-->
+<!--    <div class="hero">-->
+<!--      <h1>Weather Monitoring Dashboard</h1>-->
+<!--      <p>Real-time weather data and heatwave early warning for a safer tomorrow.</p>-->
+<!--      <div class="search"><input id="heroSearch" placeholder="Search a location, e.g. Pune"><button id="heroGo">→</button></div>-->
+<!--    </div>-->
+<!--    <div class="stats" id="stats"></div>-->
+<!--    <div class="grid2">-->
+<!--      <div class="panel"><h2>Temperature Overview</h2><div class="chart-box"><canvas id="tempChart"></canvas></div></div>-->
+<!--      <div class="panel"><h2>Heatwave Status</h2><div id="status"></div></div>-->
+<!--    </div>-->
+<!--    <h2>Current Weather</h2>-->
+<!--    <div class="cards" id="cities"></div>-->
+<!--    <div class="tiles" id="tiles"></div>-->
+<!--  </section>-->
+
+<!--  <section id="data" class="view">-->
+<!--    <h1>Weather Data</h1>-->
+<!--    <div class="filters">-->
+<!--      <input id="search" placeholder="Search location...">-->
+<!--      <select id="region"><option value="0">All Regions</option></select>-->
+<!--      <button id="searchBtn">Search</button><button id="resetBtn" class="alt">Reset</button>-->
+<!--    </div>-->
+<!--    <div id="dataTable"></div>-->
+<!--    <div class="pager"><button id="prev">Previous</button><span id="pageInfo"></span><button id="next">Next</button></div>-->
+<!--  </section>-->
+
+<!--  <section id="stations" class="view"><h1>Weather Stations</h1><div id="stationTable"></div></section>-->
+
+<!--  <section id="regions" class="view">-->
+<!--    <h1>Regions</h1>-->
+<!--    <div class="cards" id="regionCards"></div>-->
+<!--    <h2>Temperature Comparison by Region</h2>-->
+<!--    <div class="panel"><div class="chart-box"><canvas id="regionChart"></canvas></div></div>-->
+<!--    <h2>Region Details</h2>-->
+<!--    <div id="regionTable"></div>-->
+<!--  </section>-->
+
+<!--  <section id="forecast" class="view">-->
+<!--    <h1>Weather Forecast</h1>-->
+<!--    <div id="forecastTable"></div>-->
+<!--    <h2>Predicted Temperature by Region</h2>-->
+<!--    <div class="panel"><div class="chart-box"><canvas id="forecastChart"></canvas></div></div>-->
+<!--    <h2>IMD Heatwave Thresholds</h2>-->
+<!--    <div class="thresholds">-->
+<!--      <div><h3>Plains</h3><p>Normal maximum 30–40°C</p><p><b>Heatwave:</b> departure 4.5–6.4°C or above 45°C</p><p><b>Severe:</b> departure above 6.4°C or above 47°C</p></div>-->
+<!--      <div><h3>Hilly regions</h3><p>Normal maximum 20–30°C</p><p><b>Heatwave:</b> above 30°C</p><p><b>Severe:</b> above 35°C</p></div>-->
+<!--      <div><h3>Coastal regions</h3><p>Normal maximum 25–35°C</p><p><b>Heatwave:</b> above 35°C</p><p><b>Severe:</b> above 37°C</p></div>-->
+<!--    </div>-->
+<!--  </section>-->
+
+<!--  <section id="alerts" class="view"><h1>Weather Alerts</h1><div id="alertTable"></div></section>-->
+<!--  <section id="models" class="view"><h1>AI Prediction Models</h1><div id="modelTable"></div></section>-->
+<!--</main>-->
+<!--<script src="app.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weather Monitoring &amp; Heatwave Prediction System</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand"><svg class="i" viewBox="0 0 24 24" style="width:26px;height:26px"><path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/></svg><div>WeatherWatch<small>Heatwave Prediction System</small></div></div>
+  <nav id="nav"></nav>
+  <div class="side-note">Monitor. Predict.<br>Warn early.</div>
+</aside>
+
+<main>
+  <section id="dash" class="view">
+    <div class="hero">
+      <h1>Weather Monitoring Dashboard</h1>
+      <p>Real-time weather data and heatwave early warning for a safer tomorrow.</p>
+      <div class="search"><input id="heroSearch" placeholder="Search a location, e.g. Pune"><button id="heroGo">→</button></div>
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="grid2">
+      <div class="panel"><h2>Temperature Overview</h2><div class="chart-box"><canvas id="tempChart"></canvas></div></div>
+      <div class="panel"><h2>Heatwave Status</h2><div id="status"></div></div>
+    </div>
+    <h2>Current Weather</h2>
+    <div class="cards" id="cities"></div>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section id="data" class="view">
+    <h1>Weather Data</h1>
+    <div class="filters">
+      <input id="search" placeholder="Search location...">
+      <select id="region"><option value="0">All Regions</option></select>
+      <button id="searchBtn">Search</button><button id="resetBtn" class="alt">Reset</button>
+    </div>
+    <div id="dataTable"></div>
+    <div class="pager"><button id="prev">Previous</button><span id="pageInfo"></span><button id="next">Next</button></div>
+  </section>
+
+  <section id="stations" class="view"><h1>Weather Stations</h1><div id="stationTable"></div></section>
+
+  <section id="regions" class="view">
+    <h1>Regions</h1>
+    <div class="cards" id="regionCards"></div>
+    <h2>Temperature Comparison by Region</h2>
+    <div class="panel"><div class="chart-box"><canvas id="regionChart"></canvas></div></div>
+    <h2>Region Details</h2>
+    <div id="regionTable"></div>
+  </section>
+
+  <section id="forecast" class="view">
+    <h1>Weather Forecast</h1>
+    <div id="forecastTable"></div>
+    <h2>Predicted Temperature by Region</h2>
+    <div class="panel"><div class="chart-box"><canvas id="forecastChart"></canvas></div></div>
+    <h2>IMD Heatwave Thresholds</h2>
+    <div class="thresholds">
+      <div><h3>Plains</h3><p>Normal maximum 30–40°C</p><p><b>Heatwave:</b> departure 4.5–6.4°C or above 45°C</p><p><b>Severe:</b> departure above 6.4°C or above 47°C</p></div>
+      <div><h3>Hilly regions</h3><p>Normal maximum 20–30°C</p><p><b>Heatwave:</b> above 30°C</p><p><b>Severe:</b> above 35°C</p></div>
+      <div><h3>Coastal regions</h3><p>Normal maximum 25–35°C</p><p><b>Heatwave:</b> above 35°C</p><p><b>Severe:</b> above 37°C</p></div>
+    </div>
+  </section>
+
+  <section id="alerts" class="view"><h1>Weather Alerts</h1><div id="alertTable"></div></section>
+  <section id="models" class="view"><h1>AI Prediction Models</h1><div id="modelTable"></div></section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
