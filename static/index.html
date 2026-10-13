@@ -1,110 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--<meta charset="UTF-8">-->
-<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--<title>Weather Analytics Center</title>-->
-<!--<link rel="stylesheet" href="style.css">-->
-<!--<style>#nav a[data-v="models"] { display:none; }  /* AI Models removed from the menu */</style>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>-->
-<!--<style>-->
-<!--/* works with the existing style.css: icon size, plain cards, solid colours (no gradients) */-->
-<!--svg.i { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }-->
-<!--.ico { color:#D64530; }-->
-<!--.sidebar { background:#8B1E3F; } .hero { background:#8B1E3F; } button { background:#D64530; } button.alt { background:#A0522D; }-->
-<!--.city .head { padding:12px 16px; background:#FFF4E6; border-bottom:1px solid #F1DDCB; color:#8B1E3F; font-weight:600; }-->
-<!--.tile { height:auto; align-items:center; gap:12px; padding:18px; } .tile::before { display:none; } .tile span { flex:1; }-->
-<!--</style>-->
-<!--<style>-->
-<!--/* extra features */-->
-<!--.meter { margin-top:12px; } .meter-top { display:flex; justify-content:space-between; font-size:12px; color:#8A6A5E; }-->
-<!--.meter-bar { height:8px; margin-top:5px; border-radius:4px; background:#EFE3D5; overflow:hidden; } .meter-bar i { display:block; height:100%; border-radius:4px; }-->
-<!--#hottest { padding-top:14px; } .rank { display:flex; align-items:center; gap:14px; padding:8px 0; } .rank + .rank { border-top:1px solid #F1E6D8; }-->
-<!--.rank .no { display:grid; place-items:center; width:30px; height:30px; border-radius:8px; background:var(&#45;&#45;rose,#8B1E3F); color:#fff; font-weight:700; }-->
-<!--.rk-main { flex:1; } .rk-name { font-weight:600; } .rk-name small { margin-left:6px; font-weight:400; color:#8A6A5E; }-->
-<!--.rk-bar { height:8px; margin-top:6px; border-radius:4px; background:#EFE3D5; overflow:hidden; } .rk-bar i { display:block; height:100%; border-radius:4px; background:var(&#45;&#45;red,#D64530); }-->
-<!--.rank b { min-width:62px; text-align:right; color:var(&#45;&#45;red,#D64530); font-size:17px; }-->
-<!--.alert-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:16px; }-->
-<!--.acard { padding:16px 18px; border:1px solid #EBDDCB; border-left:5px solid #B8A99A; border-radius:12px; background:#fff; box-shadow:0 1px 4px rgba(58,31,26,.08); cursor:pointer; }-->
-<!--.acard.high { border-left-color:var(&#45;&#45;high,#D64530); } .acard.moderate { border-left-color:#E3B341; } .acard:hover { box-shadow:0 3px 10px rgba(58,31,26,.15); }-->
-<!--.acard.sel { outline:2px solid var(&#45;&#45;rose,#8B1E3F); outline-offset:-1px; }-->
-<!--.ac-top { display:flex; justify-content:space-between; align-items:center; } .ac-id { font-size:12px; color:#8A6A5E; }-->
-<!--.ac-region { margin-top:12px; font-size:18px; font-weight:700; color:var(&#45;&#45;rose,#8B1E3F); } .ac-city { margin-top:2px; font-size:13px; color:#8A6A5E; }-->
-<!--.ac-temp { margin-top:10px; font-size:26px; font-weight:700; color:var(&#45;&#45;red,#D64530); } .ac-temp small { font-size:12px; font-weight:400; color:#8A6A5E; }-->
-<!--.ac-foot { margin-top:8px; font-size:12px; color:#8A6A5E; }-->
-<!--.ac-chan { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; } .ac-chan span { padding:3px 10px; border-radius:6px; background:#F6EBD9; color:#5C3A2E; font-size:12px; }-->
-<!--.advice { margin-bottom:18px; padding:16px 20px 14px; } .adv-head { display:flex; align-items:center; gap:12px; } .adv-head h3 { margin:0; color:var(&#45;&#45;rose,#8B1E3F); }-->
-<!--.adv-info { margin:6px 0 4px; font-size:13px; color:#8A6A5E; } .advice ul { margin:8px 0 0; padding-left:20px; line-height:1.7; font-size:14px; }-->
-<!--</style>-->
-<!--</head>-->
-<!--<body>-->
-<!--<aside class="sidebar">-->
-<!--  <nav id="nav"></nav>-->
-<!--  <div class="side-note">Monitor. Predict.<br>Warn early.</div>-->
-<!--</aside>-->
-
-<!--<main>-->
-<!--  <section id="dash" class="view">-->
-<!--    <div class="hero">-->
-<!--      <h1>Weather Analytics Center</h1>-->
-<!--      <p>Turning live weather data into actionable insights and early heat warnings.</p>-->
-<!--      <div class="search"><input id="heroSearch" placeholder="Search a location, e.g. Pune"><button id="heroGo">→</button></div>-->
-<!--    </div>-->
-<!--    <div class="stats" id="stats"></div>-->
-<!--    <div class="grid2">-->
-<!--      <div class="panel"><h2>Temperature Overview</h2><div class="chart-box"><canvas id="tempChart"></canvas></div></div>-->
-<!--      <div class="panel"><h2>Heatwave Status</h2><div id="status"></div></div>-->
-<!--    </div>-->
-<!--    <h2>Current Weather</h2>-->
-<!--    <div class="cards" id="cities"></div>-->
-<!--    <h2>Top 5 Hottest Regions</h2>-->
-<!--    <div class="panel"><div id="hottest"></div></div>-->
-<!--    <div class="tiles" id="tiles"></div>-->
-<!--  </section>-->
-
-<!--  <section id="data" class="view">-->
-<!--    <h1>Weather Data</h1>-->
-<!--    <div class="filters">-->
-<!--      <input id="search" placeholder="Search location...">-->
-<!--      <select id="region"><option value="0">All Regions</option></select>-->
-<!--      <button id="searchBtn">Search</button><button id="resetBtn" class="alt">Reset</button><button id="csvBtn" class="alt">Download CSV</button>-->
-<!--    </div>-->
-<!--    <div id="dataTable"></div>-->
-<!--    <div class="pager"><button id="prev">Previous</button><span id="pageInfo"></span><button id="next">Next</button></div>-->
-<!--  </section>-->
-
-<!--  <section id="stations" class="view"><h1>Weather Stations</h1><div id="stationTable"></div></section>-->
-
-<!--  <section id="regions" class="view">-->
-<!--    <h1>Regions</h1>-->
-<!--    <div class="cards" id="regionCards"></div>-->
-<!--    <h2>Temperature Comparison by Region</h2>-->
-<!--    <div class="panel"><div class="chart-box"><canvas id="regionChart"></canvas></div></div>-->
-<!--    <h2>Region Details</h2>-->
-<!--    <div id="regionTable"></div>-->
-<!--  </section>-->
-
-<!--  <section id="forecast" class="view">-->
-<!--    <h1>Weather Forecast</h1>-->
-<!--    <div id="forecastTable"></div>-->
-<!--    <h2>Predicted Temperature by Region</h2>-->
-<!--    <div class="panel"><div class="chart-box"><canvas id="forecastChart"></canvas></div></div>-->
-<!--    <h2>IMD Heatwave Thresholds</h2>-->
-<!--    <div class="thresholds">-->
-<!--      <div><h3>Plains</h3><p>Normal maximum 30–40°C</p><p><b>Heatwave:</b> departure 4.5–6.4°C or above 45°C</p><p><b>Severe:</b> departure above 6.4°C or above 47°C</p></div>-->
-<!--      <div><h3>Hilly regions</h3><p>Normal maximum 20–30°C</p><p><b>Heatwave:</b> above 30°C</p><p><b>Severe:</b> above 35°C</p></div>-->
-<!--      <div><h3>Coastal regions</h3><p>Normal maximum 25–35°C</p><p><b>Heatwave:</b> above 35°C</p><p><b>Severe:</b> above 37°C</p></div>-->
-<!--    </div>-->
-<!--  </section>-->
-
-<!--  <section id="alerts" class="view"><h1>Weather Alerts</h1>-->
-<!--    <div class="panel advice" id="advice"><p class="adv-info">Click an alert row to see safety advice.</p></div>-->
-<!--    <div id="alertTable"></div></section>-->
-<!--</main>-->
-<!--<script src="app.js"></script>-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,8 +11,15 @@
 /* works with the existing style.css: icon size, plain cards, solid colours (no gradients) */
 svg.i { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }
 .ico { color:#D64530; }
-.sidebar { background:#8B1E3F; } .hero { background:#8B1E3F; } button { background:#D64530; } button.alt { background:#A0522D; }
-.city .head { padding:12px 16px; background:#FFF4E6; border-bottom:1px solid #F1DDCB; color:#8B1E3F; font-weight:600; }
+:root { --rose:#9C3F57; --heatwave:#A84A62; }
+/* soft pastel status badges */
+.badge { padding:3px 12px; font-weight:600; }
+.badge.high { background:#F7D4CB; color:#9A3A25; }
+.badge.moderate { background:#FBE3C4; color:#85561D; }
+.badge.normal { background:#DCE8D2; color:#4F6B45; }
+.badge.heatwave { background:#F1CDD6; color:#8E3550; }
+.sidebar { background:#A84A62; } .hero { background:linear-gradient(90deg,rgba(120,40,62,.92) 0%,rgba(150,55,80,.75) 40%,rgba(168,74,98,.15) 100%),url(hero.jpg) center/cover no-repeat; min-height:230px; text-shadow:0 1px 6px rgba(60,10,25,.35); } button { background:#DB6650; } button.alt { background:#B8794F; }
+.city .head { padding:12px 16px; background:#FFF4E6; border-bottom:1px solid #F1DDCB; color:var(--rose); font-weight:600; }
 .tile { height:auto; align-items:center; gap:12px; padding:18px; } .tile::before { display:none; } .tile span { flex:1; }
 </style>
 <style>
@@ -193,6 +93,9 @@ svg.i { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.
 
   <section id="forecast" class="view">
     <h1>Weather Forecast</h1>
+    <div class="filters">
+      <select id="fSeverity"><option value="">All Severity Levels</option></select>
+    </div>
     <div id="forecastTable"></div>
     <h2>Predicted Temperature by Region</h2>
     <div class="panel"><div class="chart-box"><canvas id="forecastChart"></canvas></div></div>
