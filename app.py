@@ -12,7 +12,7 @@ from flask import Flask, jsonify, request
 DB = dict(
     host='localhost',
     port='5432',
-    dbname='climate',
+    dbname='Climate',
     user='postgres',
     password='123456789',
     connect_timeout=5
