@@ -53,14 +53,8 @@ This project combines frontend development, backend API development, and databas
 
 ## 🖥️ Dashboard Preview
 
-Add a screenshot of your running application to make the repository more engaging.
 
-1. Run the application locally.
-2. Take a screenshot of the dashboard.
-3. Create a folder named `screenshots` in the project directory.
-4. Save the screenshot as `weatherwise-dashboard.png`.
 
-Then this section will display it:
 
 <p align="center">
   <img src="screenshots/weatherwise-dashboard.png" alt="WeatherWise Dashboard" width="95%"/>
